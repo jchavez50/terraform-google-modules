@@ -1,9 +1,8 @@
-
-
 resource "google_compute_instance" "default" {
-    count = length(var.name_count)
-    name = count.index+1
-    machine_type = var.machine_type["prod"]
+    count = 1
+    name = "count.index+1"
+    # conditional (IF statements)
+    machine_type = var.environment == "production" ? var.machine_type : var.machine_type 
     zone = "us-west1-a"
 
     boot_disk {
@@ -16,9 +15,12 @@ resource "google_compute_instance" "default" {
       network = "default" 
     }
 
-    service_account {
-      scopes = ["userinfo-email", "compute-ro", "storage-ro"]
-    }
+
+
+service_account {
+  scopes = ["userinfo-email", "compute-ro", "storage-ro"]
 }
+   
+ 
 
 
