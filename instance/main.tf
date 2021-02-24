@@ -1,3 +1,4 @@
+
 resource "google_compute_instance" "default" {
     count = 1
     name = "count.index+1"
