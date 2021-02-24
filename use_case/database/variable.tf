@@ -1,0 +1,10 @@
+variable "tier" { default = "db-n1-standard-1" }
+variable "name" { default = "gcp-database"}
+variable "db_region" { default = "us-west1" }
+variable "disk_size" { default = "15" }
+variable "database_version" { default = "MYSQL_5_7" }
+variable "user_host" { default = "%" }
+variable "user_name" { default = "admin" }
+variable "user_password" { default = "123456" }
+variable "replication_type" { default = "ASYNCHRONOUS" }
+variable "activation_policy" { default = "always" }
