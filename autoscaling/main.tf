@@ -33,6 +33,10 @@ resource "google_compute_instance_template" "instance_template" {
         type = "PERSISTENT"
     }
 
+    network_interface {
+      network = "default"
+    }
+
     metadata = {
         foo = "bar"
     }
@@ -48,7 +52,7 @@ resource "google_compute_instance_template" "instance_template" {
 
 resource "google_compute_health_check" "health" {
     count = 1
-    name = "health_check"
+    name = "health-check"
     check_interval_sec = 5
     timeout_sec = 5
     healthy_threshold = 2
@@ -63,8 +67,8 @@ resource "google_compute_health_check" "health" {
 # Group Manager <--- Manages the Nodes
 
 resource "google_compute_region_instance_group_manager" "test-server" {
-    name = "instance_group_manager"
-    base_instance_name = "instance_group_manager"
+    name = "instance-group-manager"
+    base_instance_name = "instance-group-manager"
     region = var.region
     
     version {
